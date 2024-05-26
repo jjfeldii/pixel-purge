@@ -1,11 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum PlayerMode { Singleplayer, Multiplayer }
+
 public class MainMenuController : MonoBehaviour
 {
-    public void PlayGame()
+    public static PlayerMode playerMode = PlayerMode.Singleplayer;
+
+    public static void PlayGame()
     {
         SceneManager.LoadScene("GameScene");
     }

@@ -14,4 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Level/Scenes/SampleScene_Jan.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Level/Scenes/GameScene/BasementStart.unity
+    guid: 2e1f77cafc5726b47880a65c9aa4cc0b
+  - enabled: 1
+    path: Assets/Level/Scenes/GameScene/BasementEmpty.unity
+    guid: 67e4d63052b4fff4db23844249ad3f1d
+  - enabled: 1
+    path: Assets/Level/Scenes/GameScene/BasementMain.unity
+    guid: b5e04f6aba98deb449cecec6bf38ebf4
   m_configObjects: {}

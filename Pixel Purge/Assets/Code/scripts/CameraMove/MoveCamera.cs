@@ -5,14 +5,12 @@ using UnityEngine;
 
 public class MoveCamera : MonoBehaviour
 {
-
     public Transform player;
+
     private Vector2 boundary = new Vector2(9, 5);
     private const float CAMERA_SPEED = 0.125f;
-    private Vector2 cameraShift = new Vector2(0,0);
 
-
-    void LateUpdate()
+    void FixedUpdate()
     {
         if (player != null)
         {
@@ -37,8 +35,7 @@ public class MoveCamera : MonoBehaviour
                 cameraPos.y += 16 * boundary.y;
             }
 
-            Vector3 smoothedPosition = Vector3.Lerp(transform.position, cameraPos, CAMERA_SPEED);
-            transform.position = smoothedPosition;
+            transform.position = Vector3.Lerp(transform.position, cameraPos, CAMERA_SPEED);
 
         }
     }

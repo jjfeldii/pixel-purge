@@ -31,11 +31,13 @@ public class RoomController : MonoBehaviour
 
     void Start()
     {
-        //TODO Load not Working
-        loadRoomQueue.Clear();
+        //TODO: Implement MapGen Algorithm
+
         LoadRoom("Start", 0, 0);
         LoadRoom("Empty", 1, 0);
         LoadRoom("Empty", 0, 1);
+        LoadRoom("Empty", 0, -1);
+        LoadRoom("Empty", -1, 0);
 
     }
 
@@ -63,28 +65,32 @@ public class RoomController : MonoBehaviour
     {
         if (DoesRoomExist(x, y))
         {
+            Debug.Log($"Room at ({x}, {y}) already exists.");
             return;
         }
 
-        RoomInfo newRoomData = new RoomInfo();
-        newRoomData.name = name;
-        newRoomData.x = x;
-        newRoomData.y = y;
+        RoomInfo newRoomData = new RoomInfo {
+            name = name,
+            x = x,
+            y = y
+        };
 
+        Debug.Log($"Enqueuing room: {name} at ({x}, {y})");
         loadRoomQueue.Enqueue(newRoomData);
     }
 
     IEnumerator LoadRoomRoutine(RoomInfo info)
     {
-        string roomName = currentWorldName + info.name;
+        string roomName = $"{currentWorldName}{info.name}";
+        Debug.Log($"Loading room: {roomName}");
 
         AsyncOperation loadRoom = SceneManager.LoadSceneAsync(roomName, LoadSceneMode.Additive);
         while (!loadRoom.isDone)
         {
             yield return null;
         }
-
-        isLoadingRoom = false;
+        Debug.Log($"Room loaded: {roomName}");
+        
     }
 
     public void RegisterRoom(Room room)
@@ -99,7 +105,6 @@ public class RoomController : MonoBehaviour
         room.name = currentWorldName + "-" + currentLoadRoomData.name + " " + room.x + "," + room.y;
         room.transform.parent = transform;
 
-        isLoadingRoom = false;
 
         if(loadedRooms.Count == 0)
         {
@@ -107,6 +112,7 @@ public class RoomController : MonoBehaviour
         }
 
         loadedRooms.Add(room);
+        isLoadingRoom = false;
     }
 
     public bool DoesRoomExist(int x, int y)

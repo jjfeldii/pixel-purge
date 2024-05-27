@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Level/Scenes/GameScene/BasementMain.unity
     guid: b5e04f6aba98deb449cecec6bf38ebf4
+  - enabled: 1
+    path: Assets/Level/Scenes/GameScene/BasementEnd.unity
+    guid: 6b5f0ccdbef7da0478310ac0b0d1ed46
   m_configObjects: {}

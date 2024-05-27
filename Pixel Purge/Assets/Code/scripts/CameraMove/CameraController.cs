@@ -3,8 +3,14 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class MoveCamera : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
+
+    public static CameraController instance;
+    public Room currRoom;
+    public float moveSpeedWhenRoomChange;
+
+    /*
     public Transform player;
 
     private Vector2 boundary = new Vector2(9, 5);
@@ -38,5 +44,44 @@ public class MoveCamera : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, cameraPos, CAMERA_SPEED);
 
         }
+    }
+     */
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    private void Update()
+    {
+        UpdatePosition();
+    }
+
+    private void UpdatePosition()
+    {
+        if (currRoom == null)
+        {
+            return;
+        }
+
+        Vector3 targetPos = GetCameraTargetPosition();
+        transform.position = Vector3.Lerp(transform.position, targetPos, moveSpeedWhenRoomChange);
+    }
+
+    private Vector3 GetCameraTargetPosition()
+    {
+        if(currRoom == null)
+        {
+            return Vector3.zero;
+        }
+
+        Vector3 targetPos = currRoom.GetRoomCenter();
+        targetPos.z = transform.position.z;
+        return targetPos;
+    }
+
+    public bool IsSwitchingScene()
+    {
+        return !transform.position.Equals(GetCameraTargetPosition());
     }
 }

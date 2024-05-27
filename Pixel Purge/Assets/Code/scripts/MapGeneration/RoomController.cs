@@ -22,6 +22,7 @@ public class RoomController : MonoBehaviour
     private RoomInfo currentLoadRoomData;
     private Queue<RoomInfo> loadRoomQueue = new Queue<RoomInfo>();
     private bool isLoadingRoom = false;
+    private Room currentRoom;
 
     private void Awake()
     {
@@ -31,11 +32,10 @@ public class RoomController : MonoBehaviour
     void Start()
     {
         //TODO Load not Working
+        loadRoomQueue.Clear();
         LoadRoom("Start", 0, 0);
         LoadRoom("Empty", 1, 0);
-        LoadRoom("Empty", -1, 0);
         LoadRoom("Empty", 0, 1);
-        LoadRoom("Empty", 0, -1);
 
     }
 
@@ -47,16 +47,10 @@ public class RoomController : MonoBehaviour
 
     void UpdateRoomQueue()
     {
-        if (isLoadingRoom)
+        if (isLoadingRoom || loadRoomQueue.Count == 0)
         {
             return;
         }
-
-        if(loadRoomQueue.Count == 0)
-        {
-            return;
-        }
-        
         
         currentLoadRoomData = loadRoomQueue.Dequeue();
         isLoadingRoom = true;
@@ -85,7 +79,7 @@ public class RoomController : MonoBehaviour
         string roomName = currentWorldName + info.name;
 
         AsyncOperation loadRoom = SceneManager.LoadSceneAsync(roomName, LoadSceneMode.Additive);
-        while (loadRoom.isDone == false)
+        while (!loadRoom.isDone)
         {
             yield return null;
         }
@@ -106,11 +100,23 @@ public class RoomController : MonoBehaviour
         room.transform.parent = transform;
 
         isLoadingRoom = false;
+
+        if(loadedRooms.Count == 0)
+        {
+            CameraController.instance.currRoom = room;
+        }
+
         loadedRooms.Add(room);
     }
 
     public bool DoesRoomExist(int x, int y)
     {
-        return loadedRooms.Find(item => item.x == x && item.y == y) != null;
+        return loadedRooms.Find(item => (item.x == x && item.y == y)) != null;
+    }
+
+    public void OnPlayerEnterRoom(Room room)
+    {
+        CameraController.instance.currRoom = room;
+        currentRoom = room;
     }
 }

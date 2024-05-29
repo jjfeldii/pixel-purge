@@ -18,6 +18,11 @@ public class MainMenuController : MonoBehaviour
         SceneManager.LoadScene("OptionsMenu");
     }
 
+    public void ChooseCharacter()
+    {
+        SceneManager.LoadScene("ChooseCharacter");
+    }
+
     public void QuitGame()
     {
         Application.Quit();

@@ -19,7 +19,9 @@ public class Room : MonoBehaviour
     public Door colliderDoorTop;
     public Door colliderDoorBottom;
 
-    List<Door> doors;
+    private BoxCollider2D roomCollider;
+
+    private List<Door> doors;
 
     private bool updatedDoors = false;
 
@@ -60,7 +62,34 @@ public class Room : MonoBehaviour
             }
         }
 
+        roomCollider = GetComponent<BoxCollider2D>();
+
         RoomController.instance.RegisterRoom(this);
+    }
+
+    public bool IsEnemyInsideRoom(Transform enemy)
+    {
+        return roomCollider.bounds.Contains(enemy.position);
+    }
+
+    public void UnlockDoors()
+    {
+        if (GetLeft() != null)
+        {
+            colliderDoorLeft.gameObject.SetActive(false);
+        }
+        if (GetRight() != null)
+        {
+            colliderDoorRight.gameObject.SetActive(false);
+        }
+        if (GetTop() != null)
+        {
+            colliderDoorTop.gameObject.SetActive(false);
+        }
+        if (GetBottom() != null)
+        {
+            colliderDoorBottom.gameObject.SetActive(false);
+        }
     }
 
     private void Update()
@@ -110,9 +139,6 @@ public class Room : MonoBehaviour
 
         }
     }
-
-
-
 
     public Room GetLeft()
     {

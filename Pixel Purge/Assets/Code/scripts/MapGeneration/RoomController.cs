@@ -22,10 +22,12 @@ public class RoomController : MonoBehaviour
     private string currentWorldName = "Basement";
     private RoomInfo currentLoadRoomData;
     private Queue<RoomInfo> loadRoomQueue = new Queue<RoomInfo>();
+    private BoxCollider2D RoomCollider;
     private bool isLoadingRoom = false;
-    bool spawnedBossRoom = false;
-    bool updatedRooms = false;
+    private bool spawnedBossRoom = false;
+    private bool updatedRooms = false;
     private Room currentRoom;
+    private bool enemysRemaining = true;
 
     private void Awake()
     {
@@ -38,9 +40,33 @@ public class RoomController : MonoBehaviour
     }
 
 
-    void Update()
+    private void Update()
     {
         UpdateRoomQueue();
+
+        if (currentRoom != null)
+        {
+            UpdateEnemiesRemainingInCurrentRoom();
+            if (!enemysRemaining)
+            {
+                currentRoom.UnlockDoors();
+            }
+        }
+
+    }
+
+    private void UpdateEnemiesRemainingInCurrentRoom()
+    {
+        bool enemiesRemaining = false;
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            if (currentRoom.IsEnemyInsideRoom(enemy.transform))
+            {
+                enemiesRemaining = true;
+                break;
+            }
+        }
+        this.enemysRemaining = enemiesRemaining;
     }
 
     void UpdateRoomQueue()
@@ -103,7 +129,6 @@ public class RoomController : MonoBehaviour
             y = y
         };
 
-        Debug.Log($"Enqueuing room: {name} at ({x}, {y})");
         loadRoomQueue.Enqueue(newRoomData);
     }
 

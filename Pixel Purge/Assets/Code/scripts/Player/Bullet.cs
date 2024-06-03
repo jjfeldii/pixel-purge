@@ -7,14 +7,15 @@ public class Bullet : MonoBehaviour
 {
     private void Update()
     {
-        Destroy(gameObject, 5);
+        Destroy(gameObject, 3);
     }
-
-    private void OnCollisionEnter2D(Collision2D other)
+    
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.GetComponent<EnemyMovement>())
+        if (other.GetComponent<EnemyMovement>())
         {
-            Destroy(other.gameObject);
+            HealthController healthController = other.GetComponent<HealthController>();
+            healthController.TakeDamage(10);
             Destroy(gameObject);
         }
     }

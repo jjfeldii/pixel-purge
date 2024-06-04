@@ -28,6 +28,7 @@ public class RoomController : MonoBehaviour
     private bool updatedRooms = false;
     private Room currentRoom;
     private bool enemysRemaining = true;
+    private bool unlocked = false;
 
     private void Awake()
     {
@@ -39,20 +40,27 @@ public class RoomController : MonoBehaviour
 
     }
 
-
     private void Update()
     {
         UpdateRoomQueue();
 
         if (currentRoom != null)
         {
-            UpdateEnemiesRemainingInCurrentRoom();
-            if (!enemysRemaining)
+            if (unlocked)
             {
-                currentRoom.UnlockDoors();
+                UpdateEnemiesRemainingInCurrentRoom();
+                if (!enemysRemaining)
+                {
+                    currentRoom.UnlockDoors();
+                    unlocked = false;
+                }
             }
         }
+    }
 
+    public void InitUnlocking()
+    {
+        unlocked = true;
     }
 
     private void UpdateEnemiesRemainingInCurrentRoom()
@@ -80,6 +88,10 @@ public class RoomController : MonoBehaviour
             if (!spawnedBossRoom)
             {
                 StartCoroutine(SpawnBossRoom());
+                if(EntitySpawnController.instance != null)
+                {
+                    EntitySpawnController.instance.InitSpawning();
+                }
             } else if (spawnedBossRoom && !updatedRooms)
             {
                 foreach (Room room in loadedRooms)
@@ -106,12 +118,11 @@ public class RoomController : MonoBehaviour
         {
             Room bossRoom = loadedRooms[loadedRooms.Count - 1];
             Room tempRoom = new Room(bossRoom.x, bossRoom.y);
-            Destroy(bossRoom.gameObject);
 
             var roomToRemove = loadedRooms.Single(r => r.x == tempRoom.x && r.y == tempRoom.y);
             loadedRooms.Remove(roomToRemove);
+            Destroy(bossRoom.gameObject);
             LoadRoom("End", tempRoom.x, tempRoom.y);
-
         }
     }
 
@@ -188,5 +199,6 @@ public class RoomController : MonoBehaviour
     {
         CameraController.instance.currRoom = room;
         currentRoom = room;
+        unlocked = true;
     }
 }

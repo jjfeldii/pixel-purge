@@ -24,11 +24,12 @@ public class Room : MonoBehaviour
     private List<Door> doors;
 
     private bool updatedDoors = false;
+    public bool isBossRoom;
 
     public Room(int x, int y)
     {
         this.x = x;
-        this.y = y;
+        this.y = y;;
     }
 
     // Start is called before the first frame update
@@ -44,21 +45,24 @@ public class Room : MonoBehaviour
         Door[] ds = GetComponentsInChildren<Door>();
         foreach (Door door in ds)
         {
-            doors.Add(door);
-            switch (door.doorType)
+            if (!door.ToString().Contains("Collider"))
             {
-                case DoorType.left:
-                    leftDoor = door;
-                    break;
-                case DoorType.right:
-                    rightDoor = door;
-                    break;
-                case DoorType.top:
-                    topDoor = door;
-                    break;
-                case DoorType.bottom:
-                    bottomDoor = door;
-                    break;
+                doors.Add(door);
+                switch (door.doorType)
+                {
+                    case DoorType.left:
+                        leftDoor = door;
+                        break;
+                    case DoorType.right:
+                        rightDoor = door;
+                        break;
+                    case DoorType.top:
+                        topDoor = door;
+                        break;
+                    case DoorType.bottom:
+                        bottomDoor = door;
+                        break;
+                }
             }
         }
 
@@ -77,19 +81,30 @@ public class Room : MonoBehaviour
         if (GetLeft() != null)
         {
             colliderDoorLeft.gameObject.SetActive(false);
+            GetLeft().colliderDoorRight.gameObject.SetActive(false);
         }
         if (GetRight() != null)
         {
             colliderDoorRight.gameObject.SetActive(false);
+            GetRight().colliderDoorLeft.gameObject.SetActive(false);
         }
         if (GetTop() != null)
         {
             colliderDoorTop.gameObject.SetActive(false);
+            GetTop().colliderDoorBottom.gameObject.SetActive(false);
         }
         if (GetBottom() != null)
         {
             colliderDoorBottom.gameObject.SetActive(false);
+            GetBottom().colliderDoorTop.gameObject.SetActive(false);
         }
+    }
+    private void SetAllDoorsActive()
+    {
+        colliderDoorLeft.gameObject.SetActive(true);
+        colliderDoorRight.gameObject.SetActive(true);
+        colliderDoorTop.gameObject.SetActive(true);
+        colliderDoorBottom.gameObject.SetActive(true);
     }
 
     private void Update()

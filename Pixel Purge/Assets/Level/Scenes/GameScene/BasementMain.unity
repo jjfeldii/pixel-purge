@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 513413454}
   - component: {fileID: 513413455}
   - component: {fileID: 513413456}
+  - component: {fileID: 513413457}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -168,6 +169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadedRooms: []
+  enemysRemaining: 1
+  unlocked: 0
 --- !u!114 &513413456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,6 +184,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dungeonGenerationData: {fileID: 11400000, guid: 36f185792f6248c4099e09167c5babbd, type: 2}
+--- !u!114 &513413457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513413452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c19198502e1bae44c97dd4e69572418c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minNumEnemy: 1
+  maxNumEnemy: 5
+  enemyPrefab: {fileID: 1708505555676614160, guid: 88675f870c3039540b08c40dbf7f37a9, type: 3}
+  minNumKey: 0
+  maxNumKey: 0
+  keyPrefab: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

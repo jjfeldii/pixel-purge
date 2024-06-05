@@ -27,12 +27,11 @@ public class EntitySpawnController : MonoBehaviour
         if (RoomController.instance != null)
         {
             this.loadedRooms = RoomController.instance.loadedRooms;
-            loadedRooms[loadedRooms.Count - 1].isBossRoom = true;
 
             if (loadedRooms != null && loadedRooms.Count > 0)
             {
+                loadedRooms[loadedRooms.Count - 1].isBossRoom = true;
                 SpawnEntitiesInRooms(minNumEnemy, maxNumEnemy, enemyPrefab);
-                SpawnBoss();
                 SpawnKeysForBossRoom(minNumKey, maxNumKey, keyPrefab);
                 RoomController.instance.InitUnlocking();
             }
@@ -75,14 +74,35 @@ public class EntitySpawnController : MonoBehaviour
         }
     }
 
-    private void SpawnBoss()
-    {
-        //TODO: Spawn Boss, GameObject Boss
-    }
 
+    //TODO: GameObject Key, Gen Key, Unlock BossRoom if all keys collected
     private void SpawnKeysForBossRoom(int minNum, int maxNum, GameObject prefab)
     {
-        //TODO: GameObject Key, Gen Key, Unlock BossRoom if all keys collected
+        int numKeys = Random.Range(minNum, maxNum);
+
+        List<Room> rooms = new List<Room>(loadedRooms);
+
+        // Sortiere die Räume nach Entfernung vom Ursprungspunkt (0,0)
+        rooms.Sort((a, b) => Vector2.Distance(Vector2.zero, new Vector2(b.x, b.y)).CompareTo(Vector2.Distance(Vector2.zero, new Vector2(a.x, a.y))));
+
+        // Spawne die Schlüssel in den weitest entfernten Räumen, außer im Boss-Raum
+        int keysSpawned = 0;
+        foreach (Room room in rooms)
+        {
+            if (keysSpawned >= numKeys)
+                break;
+
+            if (room.isBossRoom)
+                continue;
+
+            BoxCollider2D roomCollider = room.GetComponent<BoxCollider2D>();
+            if (roomCollider != null)
+            {
+                Vector3 spawnPosition = GetRandomPositionInRoom(roomCollider, prefab);
+                Instantiate(prefab, spawnPosition, Quaternion.identity);
+                keysSpawned++;
+            }
+        }
     }
 
     private Vector3 GetRandomPositionInRoom(BoxCollider2D roomCollider, GameObject prefab)

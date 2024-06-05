@@ -169,8 +169,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadedRooms: []
-  enemysRemaining: 1
-  unlocked: 0
 --- !u!114 &513413456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,9 +197,9 @@ MonoBehaviour:
   minNumEnemy: 1
   maxNumEnemy: 5
   enemyPrefab: {fileID: 1708505555676614160, guid: 88675f870c3039540b08c40dbf7f37a9, type: 3}
-  minNumKey: 0
-  maxNumKey: 0
-  keyPrefab: {fileID: 0}
+  minNumKey: 3
+  maxNumKey: 8
+  keyPrefab: {fileID: 9132338664345363462, guid: d47ced0d07c149e41a74055093b75a93, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

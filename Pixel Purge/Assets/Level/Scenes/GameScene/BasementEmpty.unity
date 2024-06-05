@@ -470,6 +470,7 @@ MonoBehaviour:
   colliderDoorRight: {fileID: 1790344176}
   colliderDoorTop: {fileID: 1151312338}
   colliderDoorBottom: {fileID: 1194504921}
+  isBossRoom: 0
 --- !u!4 &388013148
 Transform:
   m_ObjectHideFlags: 0

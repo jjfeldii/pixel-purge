@@ -52,6 +52,8 @@ public class CharacterManager : MonoBehaviour
     {
         Character character = characterDB.GetCharacter(selectedOption);
         artworkSprite.sprite = character.characterSprite;
+
+        UpdatePlayerSprite(character.characterSprite);
     }
 
     private void Load()
@@ -62,5 +64,17 @@ public class CharacterManager : MonoBehaviour
     private void Save()
     {
         PlayerPrefs.SetInt("selectedOption", selectedOption);
+    }
+
+   private void UpdatePlayerSprite(Sprite newSprite)
+    {
+        if (artworkSprite != null)
+        {
+            artworkSprite.sprite = newSprite;
+        }
+        else
+        {
+            Debug.LogError("SpriteRenderer Component not found in Graphics GameObject.");
+        }
     }
 }

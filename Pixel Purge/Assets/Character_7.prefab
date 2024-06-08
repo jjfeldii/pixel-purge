@@ -271,7 +271,7 @@ MonoBehaviour:
         m_MethodName: UpdateHealthBar
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 5882536785688414681}
+          m_ObjectArgument: {fileID: 5882536785688414681, guid: b3391477c3e37fe4f942cb3598f5954e, type: 3}
           m_ObjectArgumentAssemblyTypeName: HealthController, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0

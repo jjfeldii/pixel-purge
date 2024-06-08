@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8386327394111719370}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Gun Offset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 5882536785688414681}
   - component: {fileID: -2928702553086811464}
   - component: {fileID: -8821905544153555697}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Character_1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -65,7 +65,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 250, y: 250, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4496938304061365312}
@@ -313,7 +313,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4496938304061365312}
   - component: {fileID: 4237243517372624796}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,7 +397,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8982336453884265435}
   - component: {fileID: 3763577246052139986}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}

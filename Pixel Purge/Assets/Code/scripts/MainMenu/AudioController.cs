@@ -11,7 +11,7 @@ public class AudioController : MonoBehaviour
     public static AudioController instance;
     public Button AudioButton;
 
-    private bool playing = false;
+    private bool playing;
 
     public void Awake()
     {
@@ -19,8 +19,6 @@ public class AudioController : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-        } else {
-            Destroy(gameObject);
         }
     }
 
@@ -28,11 +26,14 @@ public class AudioController : MonoBehaviour
     {
         audioSource.clip = audioClip;
         audioSource.Stop();
+        playing = false;
+        AudioButton.GetComponentInChildren<TextMeshProUGUI>().text = "Audio: Aus";
+
     }
 
     public void ChangeAudio()
     {
-        String temp;
+        string temp;
         if (playing)
         {
             audioSource.Stop();

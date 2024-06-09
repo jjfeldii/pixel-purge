@@ -1,13 +1,14 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
 public class OptionsMenuController : MonoBehaviour
 {
 
-    public Button SetPlayerModeBtt;
+    public GameObject mainCanvas;
+    public GameObject optionsCanvas;
 
+    public Button SetPlayerModeBtt;
 
     public void Update()
     {
@@ -16,7 +17,11 @@ public class OptionsMenuController : MonoBehaviour
 
     public void GoToMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        if (mainCanvas != null && optionsCanvas != null)
+        {
+            optionsCanvas.SetActive(false);
+            mainCanvas.SetActive(true);
+        }
     }
 
     public void ChangePlayerMode()

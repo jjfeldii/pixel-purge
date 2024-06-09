@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Level/Scenes/MenuScenes/OptionsMenu.unity
     guid: 4e6991eae35d1374f9990a3f7456637d
   - enabled: 1
+    path: Assets/Level/Scenes/MenuScenes/SelectCharacter.unity
+    guid: 37d22cf346e74a4409f22844f82830ae
+  - enabled: 1
     path: Assets/Level/Scenes/SampleScene_Jan.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1

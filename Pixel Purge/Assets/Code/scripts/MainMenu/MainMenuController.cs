@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +7,10 @@ public class MainMenuController : MonoBehaviour
 {
     public static PlayerMode playerMode = PlayerMode.Singleplayer;
 
+    public GameObject mainCanvas;
+    public GameObject optionsCanvas;
+    public GameObject characterSelectCanvas;
+
     public static void PlayGame()
     {
         SceneManager.LoadScene("GameScene");
@@ -15,12 +18,20 @@ public class MainMenuController : MonoBehaviour
 
     public void GoToOptionsMenu()
     {
-        SceneManager.LoadScene("OptionsMenu");
+        if (mainCanvas != null && optionsCanvas != null)
+        {
+            mainCanvas.SetActive(false);
+            optionsCanvas.SetActive(true);
+        }
     }
 
     public void GoToSelectCharacter()
     {
-        SceneManager.LoadScene("SelectCharacter");
+        if (mainCanvas != null && characterSelectCanvas != null)
+        {
+            mainCanvas.SetActive(false);
+            characterSelectCanvas.SetActive(true);
+        }
     }
 
     public void QuitGame()

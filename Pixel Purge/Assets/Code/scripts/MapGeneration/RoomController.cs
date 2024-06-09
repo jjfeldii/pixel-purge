@@ -20,13 +20,13 @@ public class RoomController : MonoBehaviour
     public List<Room> loadedRooms = new List<Room>();
 
     private string currentWorldName = "Basement";
+    private Room currentRoom;
     private RoomInfo currentLoadRoomData;
     private Queue<RoomInfo> loadRoomQueue = new Queue<RoomInfo>();
     private BoxCollider2D RoomCollider;
     private bool isLoadingRoom = false;
     private bool spawnedBossRoom = false;
     private bool updatedRooms = false;
-    private Room currentRoom;
     private bool enemysRemaining = true;
     private bool unlocked = false;
 
@@ -61,6 +61,11 @@ public class RoomController : MonoBehaviour
     public void InitUnlocking()
     {
         unlocked = true;
+    }
+
+    private Room GetBossRoom()
+    {
+        return loadedRooms[loadedRooms.Count - 1];
     }
 
     private void UpdateEnemiesRemainingInCurrentRoom()
@@ -200,5 +205,13 @@ public class RoomController : MonoBehaviour
         CameraController.instance.currRoom = room;
         currentRoom = room;
         unlocked = true;
+        if (true) // add Condition
+        {
+            Room bossRoom = GetBossRoom();
+            if (bossRoom != null)
+            {
+                bossRoom.UnlockDoors();
+            }
+        }
     }
 }

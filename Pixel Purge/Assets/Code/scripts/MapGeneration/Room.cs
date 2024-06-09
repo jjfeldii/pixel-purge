@@ -99,13 +99,6 @@ public class Room : MonoBehaviour
             GetBottom().colliderDoorTop.gameObject.SetActive(false);
         }
     }
-    private void SetAllDoorsActive()
-    {
-        colliderDoorLeft.gameObject.SetActive(true);
-        colliderDoorRight.gameObject.SetActive(true);
-        colliderDoorTop.gameObject.SetActive(true);
-        colliderDoorBottom.gameObject.SetActive(true);
-    }
 
     private void Update()
     {

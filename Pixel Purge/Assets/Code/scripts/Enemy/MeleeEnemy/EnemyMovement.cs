@@ -32,14 +32,7 @@ public class EnemyMovement : MonoBehaviour
         {
             float distanceToPlayer = _playerAwarenessController.DistanceToPlayer;
 
-            if (distanceToPlayer <= _attackRange)
-            {
-                _targetDirection = Vector2.zero;
-            }
-            else
-            {
-                _targetDirection = _playerAwarenessController.DirectionToPlayer;
-            }
+            _targetDirection = _playerAwarenessController.DirectionToPlayer;
         }
         else
         {
@@ -49,25 +42,18 @@ public class EnemyMovement : MonoBehaviour
 
     private void RotateTowardsDirection()
     {
-        if (_targetDirection == Vector2.zero)
+        if (_targetDirection != Vector2.zero)
         {
-            return;
+            Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, _targetDirection);
+            Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
+
+            _rigidbody.SetRotation(rotation);
         }
-
-        Quaternion targetRotation = Quaternion.LookRotation(transform.forward, _targetDirection);
-        Quaternion rotation =
-            Quaternion.RotateTowards(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
-
-        _rigidbody.SetRotation(rotation);
     }
 
     private void SetVelocity()
     {
-        if (_targetDirection == Vector2.zero)
-        {
-            _rigidbody.velocity = Vector2.zero;
-        }
-        else
+        if (_playerAwarenessController.AwareOfPlayer && _playerAwarenessController.DistanceToPlayer > _attackRange)
         {
             float angleDifference = Vector2.Angle(transform.up, _targetDirection);
             if (angleDifference < 5.0f)
@@ -79,6 +65,9 @@ public class EnemyMovement : MonoBehaviour
                 _rigidbody.velocity = Vector2.zero;
             }
         }
+        else
+        {
+            _rigidbody.velocity = Vector2.zero;
+        }
     }
-
 }

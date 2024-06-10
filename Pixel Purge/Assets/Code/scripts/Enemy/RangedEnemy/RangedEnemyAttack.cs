@@ -11,6 +11,9 @@ public class RangedEnemyAttack : MonoBehaviour
     [SerializeField]
     private float _timeBetweenShots;
 
+    [SerializeField]
+    private float _projectileDamage;
+
     private PlayerAwarenessController _playerAwarenessController;
     private Rigidbody2D _rigidbody;
     private float _lastFireTime;
@@ -30,7 +33,6 @@ public class RangedEnemyAttack : MonoBehaviour
             if (timeSinceLastFire >= _timeBetweenShots && _rigidbody.velocity.magnitude < 0.01f)
             {
                 FireProjectile();
-
                 _lastFireTime = Time.time;
             }
         }
@@ -45,7 +47,12 @@ public class RangedEnemyAttack : MonoBehaviour
 
         GameObject projectile = Instantiate(_projectilePrefab, spawnPosition, projectileRotation);
         Rigidbody2D rigidbody = projectile.GetComponent<Rigidbody2D>();
-
         rigidbody.velocity = _projectileSpeed * directionToPlayer;
+
+        Bullet bulletScript = projectile.GetComponent<Bullet>();
+        if (bulletScript != null)
+        {
+            bulletScript.SetDamage(_projectileDamage);
+        }
     }
 }

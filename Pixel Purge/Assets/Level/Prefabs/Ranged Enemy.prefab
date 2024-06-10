@@ -12,17 +12,45 @@ PrefabInstance:
       propertyPath: _chanceOfCollectableDrop
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: -2005755310081405467, guid: 88675f870c3039540b08c40dbf7f37a9, type: 3}
+      propertyPath: _currentHealth
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -2005755310081405467, guid: 88675f870c3039540b08c40dbf7f37a9, type: 3}
+      propertyPath: _maximumHealth
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1708505555676614160, guid: 88675f870c3039540b08c40dbf7f37a9, type: 3}
       propertyPath: m_Name
       value: Ranged Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 1708505555676614160, guid: 88675f870c3039540b08c40dbf7f37a9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1936535023923182639, guid: 88675f870c3039540b08c40dbf7f37a9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 60cc2cdc49b54ab46bff4f4d3adb5514, type: 3}
+    - target: {fileID: 1936535023923182639, guid: 88675f870c3039540b08c40dbf7f37a9, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1936535023923182639, guid: 88675f870c3039540b08c40dbf7f37a9, type: 3}
+      propertyPath: m_Color.g
+      value: 0.030630242
+      objectReference: {fileID: 0}
+    - target: {fileID: 1936535023923182639, guid: 88675f870c3039540b08c40dbf7f37a9, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3124682000316714555, guid: 88675f870c3039540b08c40dbf7f37a9, type: 3}
       propertyPath: _speed
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3124682000316714555, guid: 88675f870c3039540b08c40dbf7f37a9, type: 3}
       propertyPath: _attackRange
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3124682000316714555, guid: 88675f870c3039540b08c40dbf7f37a9, type: 3}
       propertyPath: _rotationSpeed
@@ -31,6 +59,14 @@ PrefabInstance:
     - target: {fileID: 6359440974799480978, guid: 88675f870c3039540b08c40dbf7f37a9, type: 3}
       propertyPath: _playerAwarenessDistance
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7102430533921169173, guid: 88675f870c3039540b08c40dbf7f37a9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7102430533921169173, guid: 88675f870c3039540b08c40dbf7f37a9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 7102430533921169173, guid: 88675f870c3039540b08c40dbf7f37a9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -104,3 +140,4 @@ MonoBehaviour:
   _projectilePrefab: {fileID: 5339490513888175130, guid: 80bdadd64f607214f8b3bfcf26e5be7f, type: 3}
   _projectileSpeed: 10
   _timeBetweenShots: 1
+  _projectileDamage: 10

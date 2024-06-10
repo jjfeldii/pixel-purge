@@ -246,7 +246,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 1708505555676614160, guid: 88675f870c3039540b08c40dbf7f37a9, type: 3}
   minNumKey: 3
   maxNumKey: 4
-  keyPrefab: {fileID: 9132338664345363462, guid: d47ced0d07c149e41a74055093b75a93, type: 3}
+  keyPrefab: {fileID: 6285619553194439656, guid: 9114504d7cc0c0647a3cae1d7ad4a849, type: 3}
 --- !u!114 &513413458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,7 +254,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 513413452}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2bc5d5518a39b94ea80729296c3a689, type: 3}
   m_Name: 

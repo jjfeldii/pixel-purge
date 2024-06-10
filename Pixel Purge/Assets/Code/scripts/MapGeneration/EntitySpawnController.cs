@@ -74,28 +74,16 @@ public class EntitySpawnController : MonoBehaviour
         }
     }
 
-
-    //TODO: GameObject Key, Gen Key, Unlock BossRoom if all keys collected
     private void SpawnKeysForBossRoom(int minNum, int maxNum, GameObject prefab)
     {
         int numKeys = Random.Range(minNum, maxNum);
-
+        RoomController.instance.SetKeyCount(numKeys);
         List<Room> rooms = new List<Room>(loadedRooms);
 
-        // Sortiere die Räume nach Entfernung vom Ursprungspunkt (0,0)
-        rooms.Sort((a, b) => Vector2.Distance(Vector2.zero, new Vector2(b.x, b.y)).CompareTo(Vector2.Distance(Vector2.zero, new Vector2(a.x, a.y))));
-
-        // Spawne die Schlüssel in den weitest entfernten Räumen, außer im Boss-Raum
         int keysSpawned = 0;
-        foreach (Room room in rooms)
+        for (int i = 0; i < numKeys; i++)
         {
-            if (keysSpawned >= numKeys)
-                break;
-
-            if (room.isBossRoom)
-                continue;
-
-            BoxCollider2D roomCollider = room.GetComponent<BoxCollider2D>();
+            BoxCollider2D roomCollider = rooms[(int) Random.Range(0, loadedRooms.Count - 2)].GetComponent<BoxCollider2D>();
             if (roomCollider != null)
             {
                 Vector3 spawnPosition = GetRandomPositionInRoom(roomCollider, prefab);
@@ -103,6 +91,7 @@ public class EntitySpawnController : MonoBehaviour
                 keysSpawned++;
             }
         }
+        
     }
 
     private Vector3 GetRandomPositionInRoom(BoxCollider2D roomCollider, GameObject prefab)

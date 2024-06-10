@@ -117,8 +117,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e269433fa67e954ba50f058f83783ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 2
-  _rotationSpeed: 100
+  _speed: 3
+  _rotationSpeed: 200
+  _attackRange: 0
 --- !u!114 &6359440974799480978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c34bcc5d3dca7574ab7b94ce0385c067, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerAwarenessDistance: 8
+  _playerAwarenessDistance: 15
 --- !u!114 &9006450900384706466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6376649c368767c4dae9423d4a6a6038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageAmount: 10
+  _damageAmount: 30
 --- !u!114 &-8166107024567690715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 706d694f9c7020b459f2711f9becd932, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chanceOfCollectableDrop: 0.5
+  _chanceOfCollectableDrop: 0.1
 --- !u!114 &-2005755310081405467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,8 +171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cff81705fc4ecaa428dc9190406d95aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentHealth: 20
-  _maximumHealth: 20
+  _currentHealth: 30
+  _maximumHealth: 30
   OnDied:
     m_PersistentCalls:
       m_Calls:

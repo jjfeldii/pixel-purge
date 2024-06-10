@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class SelectCharacterController : MonoBehaviour
 {
@@ -35,8 +36,9 @@ public class SelectCharacterController : MonoBehaviour
         colors[8] = new Color(0.96f, 0.75f, 0.75f); // Soft Pink
         colors[9] = new Color(0.50f, 0.76f, 0.76f); // Soft Teal
 
-        colorIdx = 5;
+        colorIdx = 0;
         circleImage.color = colors[colorIdx];
+        UpdateButtonStates();
     }
 
 
@@ -44,6 +46,8 @@ public class SelectCharacterController : MonoBehaviour
     {
         if (mainCanvas != null && characterSelectCanvas != null)
         {
+            PlayerPrefs.SetString("SelectedColor", ColorUtility.ToHtmlStringRGB(circleImage.color));
+           
             characterSelectCanvas.SetActive(false);
             mainCanvas.SetActive(true);
         }

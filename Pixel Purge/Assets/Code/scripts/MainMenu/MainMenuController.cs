@@ -13,7 +13,7 @@ public class MainMenuController : MonoBehaviour
 
     public static void PlayGame()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("BasementMain");
     }
 
     public void GoToOptionsMenu()

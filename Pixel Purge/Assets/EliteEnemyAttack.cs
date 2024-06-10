@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RangedEnemyAttack : MonoBehaviour
+public class EliteEnemyAttack : MonoBehaviour
 {
     [SerializeField]
     private GameObject _projectilePrefab;
@@ -19,38 +19,46 @@ public class RangedEnemyAttack : MonoBehaviour
 
     private PlayerAwarenessController _playerAwarenessController;
     private Rigidbody2D _rigidbody;
+    private Transform _playerTransform;
     private float _lastFireTime;
-
+    private EnemyMovement _enemyMovement;
     private void Awake()
     {
         _playerAwarenessController = GetComponent<PlayerAwarenessController>();
         _rigidbody = GetComponent<Rigidbody2D>();
+        _enemyMovement = GetComponent<EnemyMovement>();
+    }
+
+    private void Start()
+    {
+        _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void Update()
     {
         if (_playerAwarenessController.AwareOfPlayer)
         {
+            Vector2 directionToPlayer = (_playerTransform.position - transform.position).normalized;
+            _rigidbody.velocity = directionToPlayer * _enemyMovement.GetSpeed();
+
             float timeSinceLastFire = Time.time - _lastFireTime;
 
-            if (timeSinceLastFire >= _timeBetweenShots && _rigidbody.velocity.magnitude < 0.01f)
+            if (timeSinceLastFire >= _timeBetweenShots)
             {
-                FireProjectile();
+                FireProjectile(directionToPlayer);
                 _lastFireTime = Time.time;
             }
         }
     }
 
-    private void FireProjectile()
+    private void FireProjectile(Vector2 direction)
     {
-        Vector2 directionToPlayer = _playerAwarenessController.DirectionToPlayer;
-        Quaternion projectileRotation = Quaternion.LookRotation(Vector3.forward, directionToPlayer);
-
-        Vector3 spawnPosition = transform.position + (Vector3)(directionToPlayer.normalized * _spawnOffset);
+        Quaternion projectileRotation = Quaternion.LookRotation(Vector3.forward, direction);
+        Vector3 spawnPosition = transform.position + (Vector3)(direction.normalized * _spawnOffset);
 
         GameObject projectile = Instantiate(_projectilePrefab, spawnPosition, projectileRotation);
         Rigidbody2D rigidbody = projectile.GetComponent<Rigidbody2D>();
-        rigidbody.velocity = _projectileSpeed * directionToPlayer;
+        rigidbody.velocity = _projectileSpeed * direction;
 
         Bullet bulletScript = projectile.GetComponent<Bullet>();
         if (bulletScript != null)

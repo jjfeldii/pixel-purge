@@ -18,7 +18,10 @@ public class EnemyMovement : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _playerAwarenessController = GetComponent<PlayerAwarenessController>();
     }
-
+    public float GetSpeed()
+    {
+        return _speed;
+    }
     private void FixedUpdate()
     {
         UpdateTargetDirection();

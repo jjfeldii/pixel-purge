@@ -60,6 +60,14 @@ PrefabInstance:
       propertyPath: _playerAwarenessDistance
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 6918071536956255886, guid: 88675f870c3039540b08c40dbf7f37a9, type: 3}
+      propertyPath: m_Radius
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918071536956255886, guid: 88675f870c3039540b08c40dbf7f37a9, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 7102430533921169173, guid: 88675f870c3039540b08c40dbf7f37a9, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.9
@@ -112,10 +120,14 @@ PrefabInstance:
       propertyPath: _damageAmount
       value: 5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6918071536956255886, guid: 88675f870c3039540b08c40dbf7f37a9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1708505555676614160, guid: 88675f870c3039540b08c40dbf7f37a9, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 1866641108853111823}
     - targetCorrespondingSourceObject: {fileID: 1708505555676614160, guid: 88675f870c3039540b08c40dbf7f37a9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4874473910140409504}
@@ -125,6 +137,56 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1708505555676614160, guid: 88675f870c3039540b08c40dbf7f37a9, type: 3}
   m_PrefabInstance: {fileID: 8740104128622846394}
   m_PrefabAsset: {fileID: 0}
+--- !u!60 &1866641108853111823
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7998044006084751274}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0, y: 0.41468924}
+      - {x: -0.23867816, y: -0.051174343}
+      - {x: -0.42770034, y: -0.46683526}
+      - {x: 0.41969603, y: -0.45783037}
+      - {x: 0.4307795, y: -0.43837982}
+  m_UseDelaunayMesh: 0
 --- !u!114 &4874473910140409504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,3 +203,4 @@ MonoBehaviour:
   _projectileSpeed: 10
   _timeBetweenShots: 1
   _projectileDamage: 10
+  _spawnOffset: 1

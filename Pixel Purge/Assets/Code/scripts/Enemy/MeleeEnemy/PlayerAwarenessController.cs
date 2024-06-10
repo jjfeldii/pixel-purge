@@ -19,6 +19,12 @@ public class PlayerAwarenessController : MonoBehaviour
 
     void Update()
     {
+        if (_player == null)
+        {
+            AwareOfPlayer = false;
+            return;
+        }
+
         Vector2 enemyToPlayerVector = _player.position - transform.position;
         DirectionToPlayer = enemyToPlayerVector.normalized;
 

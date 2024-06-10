@@ -17,6 +17,9 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField]
     private float _timeBetweenShots;
 
+    [SerializeField]
+    private float _bulletDamage;
+
     private bool _fireContinuously;
     private bool _fireSingle;
     private float _lastFireTime;
@@ -43,6 +46,12 @@ public class PlayerShoot : MonoBehaviour
         Rigidbody2D rigidbody = bullet.GetComponent<Rigidbody2D>();
 
         rigidbody.velocity = _bulletSpeed * transform.up;
+
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
+        if (bulletScript != null)
+        {
+            bulletScript.SetDamage(_bulletDamage);
+        }
     }
 
     private void OnFire(InputValue inputValue)

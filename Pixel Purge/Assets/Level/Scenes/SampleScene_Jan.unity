@@ -734,6 +734,10 @@ PrefabInstance:
       propertyPath: OnHealthChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1742072791}
+    - target: {fileID: 6056446714854718721, guid: ba86b2f72769a0f40a6c6905f9df85ee, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9056505718654983341, guid: ba86b2f72769a0f40a6c6905f9df85ee, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.01845038

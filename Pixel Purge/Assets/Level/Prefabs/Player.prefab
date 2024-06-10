@@ -326,12 +326,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5634111014254425452}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9cdfe6008f51bc14cb000b55351e9fd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterDB: {fileID: 11400000, guid: 4c33868961e4ee9469868efa27cfa9a7, type: 2}
+  characterDB: {fileID: 0}
   artworkSprite: {fileID: 4237243517372624796}
 --- !u!1 &6225177743663103182
 GameObject:

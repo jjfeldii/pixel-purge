@@ -32,7 +32,6 @@ public class Room : MonoBehaviour
         this.y = y;;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         if (RoomController.instance == null)

@@ -18,5 +18,8 @@ public class Bullet : MonoBehaviour
             healthController.TakeDamage(10);
             Destroy(gameObject);
         }
+        if (other.tag.Equals("Obstacle")){
+            Destroy(gameObject);
+        }
     }
 }

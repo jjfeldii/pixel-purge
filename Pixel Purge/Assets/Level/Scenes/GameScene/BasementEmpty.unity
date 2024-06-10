@@ -599,7 +599,7 @@ GameObject:
   - component: {fileID: 545326270}
   m_Layer: 7
   m_Name: ColliderLeftDoor
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1073,7 +1073,7 @@ GameObject:
   - component: {fileID: 1151312338}
   m_Layer: 7
   m_Name: ColliderTopDoor
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1117,9 +1117,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1194504920}
   - component: {fileID: 1194504921}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: ColliderBottomDoor
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1164,7 +1164,7 @@ GameObject:
   - component: {fileID: 1248254113}
   - component: {fileID: 1248254114}
   - component: {fileID: 1248254115}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: LeftWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1509,7 +1509,7 @@ GameObject:
   - component: {fileID: 1790344176}
   m_Layer: 7
   m_Name: ColliderRightDoor
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1562,7 +1562,7 @@ GameObject:
   - component: {fileID: 1839019565}
   m_Layer: 6
   m_Name: SideWall
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

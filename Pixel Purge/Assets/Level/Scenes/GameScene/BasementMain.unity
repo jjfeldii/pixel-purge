@@ -245,7 +245,7 @@ MonoBehaviour:
   maxNumEnemy: 5
   enemyPrefab: {fileID: 1708505555676614160, guid: 88675f870c3039540b08c40dbf7f37a9, type: 3}
   minNumKey: 3
-  maxNumKey: 8
+  maxNumKey: 4
   keyPrefab: {fileID: 9132338664345363462, guid: d47ced0d07c149e41a74055093b75a93, type: 3}
 --- !u!114 &513413458
 MonoBehaviour:

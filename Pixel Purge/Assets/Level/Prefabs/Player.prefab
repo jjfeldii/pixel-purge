@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 5882536785688414681}
   - component: {fileID: -2928702553086811464}
   - component: {fileID: -8821905544153555697}
+  - component: {fileID: -538774937093627411}
   - component: {fileID: 6056446714854718721}
   m_Layer: 0
   m_Name: Player
@@ -272,7 +273,7 @@ MonoBehaviour:
         m_MethodName: UpdateHealthBar
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 5882536785688414681}
           m_ObjectArgumentAssemblyTypeName: HealthController, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -304,6 +305,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _invincibilityDuration: 1
+  _flashColor: {r: 1, g: 1, b: 1, a: 0.39215687}
+  _numberOfFlashes: 2
+--- !u!114 &-538774937093627411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5634111014254425452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b2354968fb21de4b9fa4c7e9c6e9c6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6056446714854718721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,7 +326,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5634111014254425452}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9cdfe6008f51bc14cb000b55351e9fd8, type: 3}
   m_Name: 

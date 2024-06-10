@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDamagedInvincibility : MonoBehaviour
+public class EnemyDamagedInvincibility : MonoBehaviour
 {
     [SerializeField] private float _invincibilityDuration;
     [SerializeField] private Color _flashColor;

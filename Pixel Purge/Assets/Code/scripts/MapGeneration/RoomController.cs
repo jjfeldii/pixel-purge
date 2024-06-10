@@ -56,6 +56,14 @@ public class RoomController : MonoBehaviour
                     currentRoom.UnlockDoors();
                     unlocked = false;
                 }
+                if (IfPlayerHasEnoughKeys())
+                {
+                    Room bossRoom = GetBossRoom();
+                    if (bossRoom != null)
+                    {
+                        bossRoom.UnlockDoors();
+                    }
+                }
             }
         }
     }
@@ -211,14 +219,6 @@ public class RoomController : MonoBehaviour
         CameraController.instance.currRoom = room;
         currentRoom = room;
         unlocked = true;
-        if (IfPlayerHasEnoughKeys())
-        {
-            Room bossRoom = GetBossRoom();
-            if (bossRoom != null)
-            {
-                bossRoom.UnlockDoors();
-            }
-        }
     }
 
     public Boolean IfPlayerHasEnoughKeys()

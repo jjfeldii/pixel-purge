@@ -1117,7 +1117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1194504920}
   - component: {fileID: 1194504921}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: ColliderBottomDoor
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -1164,7 +1164,7 @@ GameObject:
   - component: {fileID: 1248254113}
   - component: {fileID: 1248254114}
   - component: {fileID: 1248254115}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: LeftWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}

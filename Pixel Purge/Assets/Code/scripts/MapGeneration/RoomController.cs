@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using System;
 
 public class RoomInfo
 {
@@ -29,6 +30,7 @@ public class RoomController : MonoBehaviour
     private bool updatedRooms = false;
     private bool enemysRemaining = true;
     private bool unlocked = false;
+    private int keyCount = 0;
 
     private void Awake()
     {
@@ -54,8 +56,20 @@ public class RoomController : MonoBehaviour
                     currentRoom.UnlockDoors();
                     unlocked = false;
                 }
+                if (IfPlayerHasEnoughKeys())
+                {
+                    Room bossRoom = GetBossRoom();
+                    if (bossRoom != null)
+                    {
+                        bossRoom.UnlockDoors();
+                    }
+                }
             }
         }
+    }
+    public void SetKeyCount(int keyCount)
+    {
+        this.keyCount = keyCount;
     }
 
     public void InitUnlocking()
@@ -205,13 +219,14 @@ public class RoomController : MonoBehaviour
         CameraController.instance.currRoom = room;
         currentRoom = room;
         unlocked = true;
-        if (true) // add Condition
+    }
+
+    public Boolean IfPlayerHasEnoughKeys()
+    {
+        if (GameObject.FindWithTag("Player").GetComponent<KeyController>().keyCount >= keyCount)
         {
-            Room bossRoom = GetBossRoom();
-            if (bossRoom != null)
-            {
-                bossRoom.UnlockDoors();
-            }
+            return true;
         }
+        return false;
     }
 }

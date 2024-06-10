@@ -39,17 +39,13 @@ public class SpawnPlayer : MonoBehaviour
 
     private void CreatePlayer(Color color)
     {
-        GameObject player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
-        player.name = "Player";
-
-        /*
-        HealthBarUI Healthbar = FindObjectOfType<Canvas>().transform.GetComponentInChildren<HealthBarUI>();
-        HealthController healthController = player.GetComponent<HealthController>();
-        healthController.OnHealthChanged.AddListener(Healthbar.UpdateHealthBar());
-         */
-
-
-        GameObject playerGraphics = GameObject.Find("Graphics");
-        playerGraphics.GetComponent<SpriteRenderer>().color = color;
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player != null)
+        {
+            player.GetComponent<SpriteRenderer>().material.color = color;
+        } else
+        {
+            Debug.Log("Player not found! Player == null!");
+        }
     }
 }

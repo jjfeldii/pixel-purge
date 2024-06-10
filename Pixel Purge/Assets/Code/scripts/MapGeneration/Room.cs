@@ -70,6 +70,8 @@ public class Room : MonoBehaviour
         RoomController.instance.RegisterRoom(this);
     }
 
+
+
     public bool IsEnemyInsideRoom(Transform enemy)
     {
         return roomCollider.bounds.Contains(enemy.position);
@@ -79,23 +81,47 @@ public class Room : MonoBehaviour
     {
         if (GetLeft() != null)
         {
-            colliderDoorLeft.gameObject.SetActive(false);
-            GetLeft().colliderDoorRight.gameObject.SetActive(false);
+            if (GetLeft() == RoomController.instance.loadedRooms[RoomController.instance.loadedRooms.Count - 1] && RoomController.instance.IfPlayerHasEnoughKeys())
+            {
+                UnlockLeftDoor();
+            } else if (GetLeft() != RoomController.instance.loadedRooms[RoomController.instance.loadedRooms.Count - 1])
+            {
+                UnlockLeftDoor();
+            }
         }
         if (GetRight() != null)
         {
-            colliderDoorRight.gameObject.SetActive(false);
-            GetRight().colliderDoorLeft.gameObject.SetActive(false);
-        }
+            if (GetRight() == RoomController.instance.loadedRooms[RoomController.instance.loadedRooms.Count - 1] && RoomController.instance.IfPlayerHasEnoughKeys())
+            {
+                UnlockRightDoor();
+            }
+            else if (GetRight() != RoomController.instance.loadedRooms[RoomController.instance.loadedRooms.Count - 1])
+            {
+                UnlockRightDoor();
+            }
+
+            }
         if (GetTop() != null)
         {
-            colliderDoorTop.gameObject.SetActive(false);
-            GetTop().colliderDoorBottom.gameObject.SetActive(false);
+            if (GetTop() == RoomController.instance.loadedRooms[RoomController.instance.loadedRooms.Count - 1] && RoomController.instance.IfPlayerHasEnoughKeys())
+            {
+                UnlockTopDoor();
+            }
+            else if (GetTop() != RoomController.instance.loadedRooms[RoomController.instance.loadedRooms.Count - 1])
+            {
+                UnlockTopDoor();
+            }
         }
         if (GetBottom() != null)
         {
-            colliderDoorBottom.gameObject.SetActive(false);
-            GetBottom().colliderDoorTop.gameObject.SetActive(false);
+            if (GetBottom() == RoomController.instance.loadedRooms[RoomController.instance.loadedRooms.Count - 1] && RoomController.instance.IfPlayerHasEnoughKeys())
+            {
+                UnlockBottomDoor();
+            }
+            else if (GetBottom() != RoomController.instance.loadedRooms[RoomController.instance.loadedRooms.Count - 1])
+            {
+                UnlockBottomDoor();
+            }
         }
     }
 
@@ -145,6 +171,30 @@ public class Room : MonoBehaviour
             }
 
         }
+    }
+
+    private void UnlockLeftDoor()
+    {
+        colliderDoorLeft.gameObject.SetActive(false);
+        GetLeft().colliderDoorRight.gameObject.SetActive(false);
+    }
+
+    private void UnlockRightDoor()
+    {
+        colliderDoorRight.gameObject.SetActive(false);
+        GetRight().colliderDoorLeft.gameObject.SetActive(false);
+    }
+
+    private void UnlockTopDoor()
+    {
+        colliderDoorTop.gameObject.SetActive(false);
+        GetTop().colliderDoorBottom.gameObject.SetActive(false);
+    }
+
+    private void UnlockBottomDoor()
+    {
+        colliderDoorBottom.gameObject.SetActive(false);
+        GetBottom().colliderDoorTop.gameObject.SetActive(false);
     }
 
     public Room GetLeft()

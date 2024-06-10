@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
@@ -9,6 +6,8 @@ public class EnemyMovement : MonoBehaviour
     private float _speed;
 
     [SerializeField] private float _rotationSpeed;
+
+    [SerializeField] private float _attackRange;
 
     private Rigidbody2D _rigidbody;
     private PlayerAwarenessController _playerAwarenessController;
@@ -31,7 +30,16 @@ public class EnemyMovement : MonoBehaviour
     {
         if (_playerAwarenessController.AwareOfPlayer)
         {
-            _targetDirection = _playerAwarenessController.DirectionToPlayer;
+            float distanceToPlayer = _playerAwarenessController.DistanceToPlayer;
+
+            if (distanceToPlayer <= _attackRange)
+            {
+                _targetDirection = Vector2.zero;
+            }
+            else
+            {
+                _targetDirection = _playerAwarenessController.DirectionToPlayer;
+            }
         }
         else
         {
@@ -49,7 +57,7 @@ public class EnemyMovement : MonoBehaviour
         Quaternion targetRotation = Quaternion.LookRotation(transform.forward, _targetDirection);
         Quaternion rotation =
             Quaternion.RotateTowards(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
-        
+
         _rigidbody.SetRotation(rotation);
     }
 
@@ -61,7 +69,16 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
-            _rigidbody.velocity = transform.up * _speed;
+            float angleDifference = Vector2.Angle(transform.up, _targetDirection);
+            if (angleDifference < 5.0f)
+            {
+                _rigidbody.velocity = transform.up * _speed;
+            }
+            else
+            {
+                _rigidbody.velocity = Vector2.zero;
+            }
         }
     }
+
 }

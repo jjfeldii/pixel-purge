@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
     {
         Destroy(gameObject, 3);
     }
-    
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.GetComponent<EnemyMovement>())
@@ -18,7 +18,14 @@ public class Bullet : MonoBehaviour
             healthController.TakeDamage(10);
             Destroy(gameObject);
         }
-        if (other.tag.Equals("Obstacle")){
+        else if (other.GetComponent<PlayerController>())
+        {
+            HealthController healthController = other.GetComponent<HealthController>();
+            healthController.TakeDamage(10);
+            Destroy(gameObject);
+        }
+        else if (other.tag.Equals("Obstacle"))
+        {
             Destroy(gameObject);
         }
     }

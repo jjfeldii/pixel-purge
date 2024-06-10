@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RangedEnemyAttack : MonoBehaviour
@@ -14,11 +12,13 @@ public class RangedEnemyAttack : MonoBehaviour
     private float _timeBetweenShots;
 
     private PlayerAwarenessController _playerAwarenessController;
+    private Rigidbody2D _rigidbody;
     private float _lastFireTime;
 
     private void Awake()
     {
         _playerAwarenessController = GetComponent<PlayerAwarenessController>();
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -27,7 +27,7 @@ public class RangedEnemyAttack : MonoBehaviour
         {
             float timeSinceLastFire = Time.time - _lastFireTime;
 
-            if (timeSinceLastFire >= _timeBetweenShots)
+            if (timeSinceLastFire >= _timeBetweenShots && _rigidbody.velocity.magnitude < 0.01f)
             {
                 FireProjectile();
 
@@ -41,7 +41,9 @@ public class RangedEnemyAttack : MonoBehaviour
         Vector2 directionToPlayer = _playerAwarenessController.DirectionToPlayer;
         Quaternion projectileRotation = Quaternion.LookRotation(Vector3.forward, directionToPlayer);
 
-        GameObject projectile = Instantiate(_projectilePrefab, transform.position, projectileRotation);
+        Vector3 spawnPosition = transform.position + (Vector3)(directionToPlayer.normalized * 1.0f);
+
+        GameObject projectile = Instantiate(_projectilePrefab, spawnPosition, projectileRotation);
         Rigidbody2D rigidbody = projectile.GetComponent<Rigidbody2D>();
 
         rigidbody.velocity = _projectileSpeed * directionToPlayer;

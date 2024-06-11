@@ -223,7 +223,8 @@ public class RoomController : MonoBehaviour
 
     public Boolean IfPlayerHasEnoughKeys()
     {
-        if (GameObject.FindWithTag("Player").GetComponent<KeyController>().keyCount >= keyCount)
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player != null && player.GetComponent<KeyController>().keyCount >= keyCount)
         {
             return true;
         }

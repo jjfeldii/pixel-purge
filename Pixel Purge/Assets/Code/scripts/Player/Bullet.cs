@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private float _damageAmount;
-
-    public void SetDamage(float damage)
-    {
-        _damageAmount = damage;
-    }
+    public float damageAmount { get; set; }
 
     private void Update()
     {
@@ -23,7 +18,7 @@ public class Bullet : MonoBehaviour
             HealthController healthController = other.GetComponent<HealthController>();
             if (healthController != null)
             {
-                healthController.TakeDamage(_damageAmount);
+                healthController.TakeDamage(damageAmount);
             }
             Destroy(gameObject);
         }
@@ -32,7 +27,7 @@ public class Bullet : MonoBehaviour
             HealthController healthController = other.GetComponent<HealthController>();
             if (healthController != null)
             {
-                healthController.TakeDamage(_damageAmount);
+                healthController.TakeDamage(damageAmount);
             }
             Destroy(gameObject);
         }

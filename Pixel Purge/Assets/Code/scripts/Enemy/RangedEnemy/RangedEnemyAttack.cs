@@ -55,7 +55,7 @@ public class RangedEnemyAttack : MonoBehaviour
         Bullet bulletScript = projectile.GetComponent<Bullet>();
         if (bulletScript != null)
         {
-            bulletScript.SetDamage(_projectileDamage);
+            bulletScript.damageAmount = _projectileDamage;
         }
     }
 }

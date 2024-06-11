@@ -39,7 +39,7 @@ public class EliteEnemyAttack : MonoBehaviour
         if (_playerAwarenessController.AwareOfPlayer)
         {
             Vector2 directionToPlayer = (_playerTransform.position - transform.position).normalized;
-            _rigidbody.velocity = directionToPlayer * _enemyMovement.GetSpeed();
+            _rigidbody.velocity = directionToPlayer * _enemyMovement.speed;
 
             float timeSinceLastFire = Time.time - _lastFireTime;
 
@@ -63,7 +63,7 @@ public class EliteEnemyAttack : MonoBehaviour
         Bullet bulletScript = projectile.GetComponent<Bullet>();
         if (bulletScript != null)
         {
-            bulletScript.SetDamage(_projectileDamage);
+            bulletScript.damageAmount = _projectileDamage;
         }
     }
 }

@@ -50,7 +50,7 @@ public class PlayerShoot : MonoBehaviour
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         if (bulletScript != null)
         {
-            bulletScript.SetDamage(_bulletDamage);
+            bulletScript.damageAmount = _bulletDamage;
         }
     }
 

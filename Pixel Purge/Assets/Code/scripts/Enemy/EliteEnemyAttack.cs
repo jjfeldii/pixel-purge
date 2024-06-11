@@ -39,7 +39,7 @@ public class EliteEnemyAttack : MonoBehaviour
         if (_playerAwarenessController.AwareOfPlayer)
         {
             Vector2 directionToPlayer = (_playerTransform.position - transform.position).normalized;
-            _rigidbody.velocity = directionToPlayer * _enemyMovement.speed;
+            _rigidbody.velocity = directionToPlayer * _enemyMovement.GetSpeed();
 
             float timeSinceLastFire = Time.time - _lastFireTime;
 

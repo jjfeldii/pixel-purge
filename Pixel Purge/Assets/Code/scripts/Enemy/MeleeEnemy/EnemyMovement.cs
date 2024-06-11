@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public float speed { get; }
+    [SerializeField]
+    private float _speed;
 
     [SerializeField] private float _rotationSpeed;
 
@@ -18,6 +19,11 @@ public class EnemyMovement : MonoBehaviour
         _playerAwarenessController = GetComponent<PlayerAwarenessController>();
     }
     
+    //Todo: refactor
+    public float GetSpeed()
+    {
+        return _speed;
+    }
     private void FixedUpdate()
     {
         UpdateTargetDirection();
@@ -57,7 +63,7 @@ public class EnemyMovement : MonoBehaviour
             float angleDifference = Vector2.Angle(transform.up, _targetDirection);
             if (angleDifference < 5.0f)
             {
-                _rigidbody.velocity = transform.up * speed;
+                _rigidbody.velocity = transform.up * _speed;
             }
             else
             {

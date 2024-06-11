@@ -83,7 +83,7 @@ public class EntitySpawnController : MonoBehaviour
         int keysSpawned = 0;
         for (int i = 0; i < numKeys; i++)
         {
-            BoxCollider2D roomCollider = rooms[(int) Random.Range(0, loadedRooms.Count - 2)].GetComponent<BoxCollider2D>();
+            BoxCollider2D roomCollider = rooms[(int) Random.Range(1, loadedRooms.Count - 2)].GetComponent<BoxCollider2D>();
             if (roomCollider != null)
             {
                 Vector3 spawnPosition = GetRandomPositionInRoom(roomCollider, prefab);

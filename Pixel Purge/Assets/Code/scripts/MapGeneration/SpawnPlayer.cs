@@ -43,6 +43,8 @@ public class SpawnPlayer : MonoBehaviour
         if (player != null)
         {
             player.GetComponent<SpriteRenderer>().material.color = color;
+            player.GetComponent<KeyController>().keyCount = 0;
+            player.GetComponent<KeyController>().OnKeyCountChanged.Invoke();
         } else
         {
             Debug.Log("Player not found! Player == null!");

@@ -298,12 +298,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c19198502e1bae44c97dd4e69572418c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minNumEnemy: 1
-  maxNumEnemy: 5
-  enemyPrefab: {fileID: 1708505555676614160, guid: 88675f870c3039540b08c40dbf7f37a9, type: 3}
-  minNumKey: 3
+  minNumMeeleEnemy: 3
+  maxNumMeeleEnemy: 0
+  meeleEnemyPrefab: {fileID: 1708505555676614160, guid: 88675f870c3039540b08c40dbf7f37a9, type: 3}
+  minNumKey: 2
   maxNumKey: 4
   keyPrefab: {fileID: 6285619553194439656, guid: 9114504d7cc0c0647a3cae1d7ad4a849, type: 3}
+  minNumRangedEnemy: 2
+  maxNumRangedEnemy: 0
+  rangedEnemyPrefab: {fileID: 7998044006084751274, guid: 31f1e59d9dc40db4494d38147f4b7454, type: 3}
+  bossPrefab: {fileID: 7264877877149630690, guid: e2205d3dccb3c7f48a853cbd9b81917e, type: 3}
 --- !u!114 &513413458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -551,6 +555,10 @@ PrefabInstance:
       propertyPath: OnHealthChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1785376319}
+    - target: {fileID: 6056446714854718721, guid: ba86b2f72769a0f40a6c6905f9df85ee, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6056446714854718721, guid: ba86b2f72769a0f40a6c6905f9df85ee, type: 3}
       propertyPath: artworkSprite
       value: 

@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6359440974799480978, guid: 88675f870c3039540b08c40dbf7f37a9, type: 3}
       propertyPath: _playerAwarenessDistance
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6918071536956255886, guid: 88675f870c3039540b08c40dbf7f37a9, type: 3}
       propertyPath: m_Radius

@@ -10,6 +10,6 @@ public class KeyCountUI : MonoBehaviour
     
     public void UpdateKeyCount(KeyController keyController)
     {
-        _keyCountUI.text = keyController.keyCount.ToString();
+        _keyCountUI.text = keyController.keyCount.ToString() + "/" + RoomController.instance.getKeysToFindCount();
     }
 }

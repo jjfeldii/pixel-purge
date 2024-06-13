@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class EntitySpawnController : MonoBehaviour
 {
@@ -40,6 +39,15 @@ public class EntitySpawnController : MonoBehaviour
                 SpawnEntitiesInRooms(minNumMeeleEnemy, maxNumMeeleEnemy, meeleEnemyPrefab);
                 SpawnEntitiesInRooms(minNumRangedEnemy, maxNumRangedEnemy, rangedEnemyPrefab);
                 SpawnKeysForBossRoom(minNumKey, maxNumKey, keyPrefab);
+                
+                // Workaroung to update KeyCountUI on init
+                GameObject player = GameObject.FindWithTag("Player");
+                if (player != null)
+                {
+                    KeyCountUI keyCountUI = GameObject.FindObjectOfType<KeyCountUI>();
+                    keyCountUI.UpdateKeyCount(player.GetComponent<KeyController>());
+                }
+                
                 SpawnBoss();
                 RoomController.instance.InitUnlocking();
             }

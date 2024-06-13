@@ -230,4 +230,9 @@ public class RoomController : MonoBehaviour
         }
         return false;
     }
+
+    public int getKeysToFindCount()
+    {
+        return keyCount;
+    }
 }

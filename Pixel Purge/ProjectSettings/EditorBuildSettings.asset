@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Level/Scenes/MenuScenes/SelectCharacter.unity
     guid: 37d22cf346e74a4409f22844f82830ae
-  - enabled: 1
+  - enabled: 0
     path: Assets/Level/Scenes/SampleScene_Jan.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1

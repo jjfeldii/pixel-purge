@@ -27,8 +27,10 @@ public class AudioController : MonoBehaviour
         audioSource.clip = audioClip;
         audioSource.Stop();
         playing = false;
-        AudioButton.GetComponentInChildren<TextMeshProUGUI>().text = "Audio: Aus";
-
+        if(AudioButton != null)
+        {
+            AudioButton.GetComponentInChildren<TextMeshProUGUI>().text = "Audio: Aus";
+        }
     }
 
     public void ChangeAudio()
@@ -45,6 +47,9 @@ public class AudioController : MonoBehaviour
             playing = true;
             temp = "An";
         }
-        AudioButton.GetComponentInChildren<TextMeshProUGUI>().text = "Audio: " + temp;
+        if (AudioButton != null)
+        {
+            AudioButton.GetComponentInChildren<TextMeshProUGUI>().text = "Audio: " + temp;
+        }
     }
 }

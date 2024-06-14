@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -32,6 +33,8 @@ public class PlayerController : MonoBehaviour
         SetPlayerVelocity();
         RotateInDirectionOfCursor();
         //RotateInDirectionOfInput();
+
+
     }
 
     private void SetPlayerVelocity()
@@ -60,8 +63,8 @@ public class PlayerController : MonoBehaviour
             _rigidbody.MoveRotation(rotation);
         }
     }
-    
-    private void RotateInDirectionOfCursor()
+
+private void RotateInDirectionOfCursor()
     {
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 targetDirection = mouseWorldPosition - transform.position;

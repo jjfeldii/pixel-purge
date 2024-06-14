@@ -55,7 +55,7 @@ public class SelectCharacterController : MonoBehaviour
 
     public void SetNextColor()
     {
-        if (colorIdx < colors.Length - 1) // Ensure we are not out of bounds
+        if (colorIdx < colors.Length - 1)
         {
             colorIdx++;
             circleImage.color = colors[colorIdx];
@@ -65,7 +65,7 @@ public class SelectCharacterController : MonoBehaviour
 
     public void SetPrevColor()
     {
-        if (colorIdx > 0) // Ensure we are not out of bounds
+        if (colorIdx > 0)
         {
             colorIdx--;
             circleImage.color = colors[colorIdx];

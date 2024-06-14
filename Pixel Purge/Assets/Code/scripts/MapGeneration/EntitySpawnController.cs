@@ -40,7 +40,7 @@ public class EntitySpawnController : MonoBehaviour
                 SpawnEntitiesInRooms(minNumRangedEnemy, maxNumRangedEnemy, rangedEnemyPrefab);
                 SpawnKeysForBossRoom(minNumKey, maxNumKey, keyPrefab);
                 
-                // Workaroung to update KeyCountUI on init
+                // Workaround to update KeyCountUI on init
                 GameObject player = GameObject.FindWithTag("Player");
                 if (player != null)
                 {

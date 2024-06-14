@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class SpawnPlayer : MonoBehaviour
 {
-    public GameObject playerPrefab;
-
     private void Start()
     {
         if (PlayerPrefs.HasKey("SelectedColor"))

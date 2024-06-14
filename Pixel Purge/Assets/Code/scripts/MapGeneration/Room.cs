@@ -70,7 +70,14 @@ public class Room : MonoBehaviour
         RoomController.instance.RegisterRoom(this);
     }
 
-
+    private void Update()
+    {
+        if (name.Contains("End") && !updatedDoors)
+        {
+            RemoveUnconnectedDoors();
+            updatedDoors = true;
+        }
+    }
 
     public bool IsEnemyInsideRoom(Transform enemy)
     {
@@ -125,54 +132,6 @@ public class Room : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if(name.Contains("End") && !updatedDoors)
-        {
-            RemoveUnconnectedDoors();
-            updatedDoors = true;
-        }
-    }
-
-    public void RemoveUnconnectedDoors()
-    {
-        foreach (Door door in doors)
-        {
-            switch (door.doorType)
-            {
-                case DoorType.left:
-                    if (GetLeft() == null)
-                    {
-                        colliderDoorLeft.gameObject.SetActive(true);
-                        door.gameObject.SetActive(false);
-                    }
-                    break;
-                case DoorType.right:
-                    if (GetRight() == null)
-                    {
-                        colliderDoorRight.gameObject.SetActive(true);
-                        door.gameObject.SetActive(false);
-                    }
-                    break;
-                case DoorType.top:
-                    if (GetTop() == null)
-                    {
-                        colliderDoorTop.gameObject.SetActive(true);
-                        door.gameObject.SetActive(false);
-                    }
-                    break;
-                case DoorType.bottom:
-                    if (GetBottom() == null)
-                    {
-                        colliderDoorBottom.gameObject.SetActive(true);
-                        door.gameObject.SetActive(false);
-                    }
-                    break;
-            }
-
-        }
-    }
-
     private void UnlockLeftDoor()
     {
         colliderDoorLeft.gameObject.SetActive(false);
@@ -196,6 +155,67 @@ public class Room : MonoBehaviour
         colliderDoorBottom.gameObject.SetActive(false);
         GetBottom().colliderDoorTop.gameObject.SetActive(false);
     }
+
+    public void RemoveUnconnectedDoors()
+    {
+        foreach (Door door in doors)
+        {
+            switch (door.doorType)
+            {
+                case DoorType.left:
+                    if (GetLeft() == null)
+                    {
+                        RemoveLeftDoor(door);
+                    }
+                    break;
+                case DoorType.right:
+                    if (GetRight() == null)
+                    {
+                        RemoveRightDoor(door);
+                    }
+                    break;
+                case DoorType.top:
+                    if (GetTop() == null)
+                    {
+                        RemoveTopDoor(door);
+                    }
+                    break;
+                case DoorType.bottom:
+                    if (GetBottom() == null)
+                    {
+                        RemoveBottomDoor(door);
+                    }
+                    break;
+            }
+
+        }
+    }
+
+    private void RemoveLeftDoor(Door door)
+    {
+        colliderDoorLeft.gameObject.SetActive(true);
+        door.gameObject.SetActive(false);
+    }
+
+    private void RemoveRightDoor(Door door)
+    {
+        colliderDoorRight.gameObject.SetActive(true);
+        door.gameObject.SetActive(false);
+    }
+
+    private void RemoveTopDoor(Door door)
+    {
+        colliderDoorTop.gameObject.SetActive(true);
+        door.gameObject.SetActive(false);
+    }
+    private void RemoveBottomDoor(Door door)
+    {
+        colliderDoorBottom.gameObject.SetActive(true);
+        door.gameObject.SetActive(false);
+    }
+
+
+
 
     public Room GetLeft()
     {

@@ -20,26 +20,23 @@ public class RoomController : MonoBehaviour
     public static RoomController instance;
     public List<Room> loadedRooms = new List<Room>();
 
-    private string currentWorldName = "Basement";
     private Room currentRoom;
     private RoomInfo currentLoadRoomData;
     private Queue<RoomInfo> loadRoomQueue = new Queue<RoomInfo>();
     private BoxCollider2D RoomCollider;
+    private string currentWorldName = "Basement";
+
     private bool isLoadingRoom = false;
     private bool spawnedBossRoom = false;
     private bool updatedRooms = false;
     private bool enemysRemaining = true;
     private bool unlocked = false;
+
     private int keyCount = 0;
 
     private void Awake()
     {
         instance = this;
-    }
-
-    void Start()
-    {
-
     }
 
     private void Update()
@@ -70,6 +67,20 @@ public class RoomController : MonoBehaviour
     public void SetKeyCount(int keyCount)
     {
         this.keyCount = keyCount;
+    }
+
+    public int getKeysToFindCount()
+    {
+        return keyCount;
+    }
+    public Boolean IfPlayerHasEnoughKeys()
+    {
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player != null && player.GetComponent<KeyController>().keyCount >= keyCount)
+        {
+            return true;
+        }
+        return false;
     }
 
     public void InitUnlocking()
@@ -126,7 +137,24 @@ public class RoomController : MonoBehaviour
         isLoadingRoom = true;
 
         StartCoroutine(LoadRoomRoutine(currentLoadRoomData));
-        
+    }
+
+    public void LoadRoom(string name, int x, int y)
+    {
+        if (DoesRoomExist(x, y))
+        {
+            Debug.Log($"Room at ({x}, {y}) already exists.");
+            return;
+        }
+
+        RoomInfo newRoomData = new RoomInfo
+        {
+            name = name,
+            x = x,
+            y = y
+        };
+
+        loadRoomQueue.Enqueue(newRoomData);
     }
 
     IEnumerator SpawnBossRoom()
@@ -143,23 +171,6 @@ public class RoomController : MonoBehaviour
             Destroy(bossRoom.gameObject);
             LoadRoom("End", tempRoom.x, tempRoom.y);
         }
-    }
-
-    public void LoadRoom(string name, int x, int y)
-    {
-        if (DoesRoomExist(x, y))
-        {
-            Debug.Log($"Room at ({x}, {y}) already exists.");
-            return;
-        }
-
-        RoomInfo newRoomData = new RoomInfo {
-            name = name,
-            x = x,
-            y = y
-        };
-
-        loadRoomQueue.Enqueue(newRoomData);
     }
 
     IEnumerator LoadRoomRoutine(RoomInfo info)
@@ -219,20 +230,5 @@ public class RoomController : MonoBehaviour
         CameraController.instance.currRoom = room;
         currentRoom = room;
         unlocked = true;
-    }
-
-    public Boolean IfPlayerHasEnoughKeys()
-    {
-        GameObject player = GameObject.FindWithTag("Player");
-        if (player != null && player.GetComponent<KeyController>().keyCount >= keyCount)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public int getKeysToFindCount()
-    {
-        return keyCount;
     }
 }

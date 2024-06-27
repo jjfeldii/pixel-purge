@@ -14,7 +14,7 @@ public class PlayerDeath : MonoBehaviour
         }
         if (healthController != null && healthController.RemainingHealthPercentage <= 0)
         {
-            StartCoroutine(LoadMainMenu(10)); // laod Main Menu in 10 seconds
+            StartCoroutine(LoadMainMenu(3)); // laod Main Menu in 3 seconds
 
         }
     }
